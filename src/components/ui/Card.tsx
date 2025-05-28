@@ -1,14 +1,21 @@
 import React from "react";
 import RadialChart from "../charts/RadialChart";
 
+type ButtonConfig = {
+  label: string;
+  onClick: () => void;
+  variant?: "primary" | "success" | "purple";
+  outline?: boolean;
+};
+
 type CardProps = {
   title: string;
   icon: React.ReactNode;
   description: string;
-  value: number;
+  value?: number;
+  textValue?: string;
   color?: "blue" | "green" | "purple";
-  onLearnMore?: () => void;
-  onAccess?: () => void;
+  buttons?: ButtonConfig[]; // <-- Support multiple buttons
 };
 
 const Card: React.FC<CardProps> = ({
@@ -16,9 +23,9 @@ const Card: React.FC<CardProps> = ({
   icon,
   description,
   value,
+  textValue,
   color = "blue",
-  onLearnMore,
-  onAccess,
+  buttons = [],
 }) => {
   const colorClasses = {
     blue: {
@@ -49,23 +56,31 @@ const Card: React.FC<CardProps> = ({
           <h5 className="text-muted small mb-2">{description}</h5>
         </div>
       </div>
-      <div style={{ maxWidth: "120px", margin: "0 auto 15px" }}>
-        <RadialChart series={[value]} />
-      </div>
+      {typeof value === "number" ? (
+        <div style={{ maxWidth: "120px", margin: "0 auto 15px" }}>
+          <RadialChart series={[value]} />
+        </div>
+      ) : textValue ? (
+        <div className="text-center mb-3 fw-bold fs-4 text-muted">
+          {textValue}
+        </div>
+      ) : null}
+
       <div className="d-flex justify-content-between align-items-center">
-        <div className="card_btn">
-          <button
-            onClick={onLearnMore}
-            className={`ctaborder btn btn-sm ${colorClasses[color].bg} ${colorClasses[color].text}`}
-          >
-            Learn More
-          </button>
-          <button
-            onClick={onAccess}
-            className={`cta btn btn-sm ${colorClasses[color].button} text-white`}
-          >
-            Access
-          </button>
+        <div className="card_btn d-flex gap-2 flex-wrap">
+          {buttons.map((btn, index) => (
+            <button
+              key={index}
+              onClick={btn.onClick}
+              className={`cta btn btn-sm ${
+                btn.outline
+                  ? `btn-outline-${btn.variant || color}`
+                  : `btn-${btn.variant || color}`
+              }`}
+            >
+              {btn.label}
+            </button>
+          ))}
         </div>
       </div>
     </div>

@@ -8,6 +8,8 @@ import Overview from "./pages/speakup/Overview";
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import "./App.css";
 import ReportDetails from "pages/speakup/ReportDetails";
+import Systemlog from "pages/Systemlogs";
+import Userguide from "pages/userguide";
 
 const App: React.FC = () => {
   return (
@@ -50,6 +52,22 @@ const App: React.FC = () => {
           element={
             <DashboardLayout activeNav="SpeakUp+" activeSubNav="my-reports">
               <ReportDetails />
+            </DashboardLayout>
+          }
+        />
+        <Route
+          path="/logs"
+          element={
+            <DashboardLayout activeNav="Admin"  activeSubNav="System Logs">
+              <Systemlog />
+            </DashboardLayout>
+          }
+        />
+        <Route
+          path="/guide"
+          element={
+            <DashboardLayout activeNav="Admin"  activeSubNav="User Guide">
+              <Userguide />
             </DashboardLayout>
           }
         />

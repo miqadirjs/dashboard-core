@@ -44,26 +44,56 @@ const ClientsCard: React.FC<ClientsCardProps> = ({
           {menuOpen && (
             <div
               className="card_menu position-absolute bg-white shadow-sm p-2"
-              style={{ right: 0, top: "100%", zIndex: 10 }}
+              style={{ right: 0, top: "100%", zIndex: 10, width: "250px" }}
             >
               <ul className="list-unstyled mb-0">
                 <li
                   className="menu_item py-1 px-2"
-                  onClick={() => alert("View Details")}
+                  onClick={() => alert("Add User")}
                 >
-                  View Details
+                 Add User
                 </li>
                 <li
                   className="menu_item py-1 px-2"
-                  onClick={() => alert("Edit")}
+                  onClick={() => alert("Manage Incidents Tags")}
                 >
-                  Edit
+                  Manage Incidents Tags
                 </li>
                 <li
                   className="menu_item py-1 px-2"
-                  onClick={() => alert("Delete")}
+                  onClick={() => alert("Upload File")}
                 >
-                  Delete
+                  Upload File
+                </li>
+                <li
+                  className="menu_item py-1 px-2"
+                  onClick={() => alert("Edit Client Information")}
+                >
+                  Edit Client Information
+                </li>
+                <li
+                  className="menu_item py-1 px-2"
+                  onClick={() => alert("Copy URL")}
+                >
+                  Copy URL
+                </li>
+                <li
+                  className="menu_item py-1 px-2"
+                  onClick={() => alert("Move to In-Progress")}
+                >
+                  Move to In-Progress
+                </li>
+                <li
+                  className="menu_item py-1 px-2"
+                  onClick={() => alert("Move to Inactive")}
+                >
+                  Move to Inactive
+                </li>
+                <li
+                  className="menu_item py-1 px-2"
+                  onClick={() => alert("Setting")}
+                >
+                  Setting
                 </li>
               </ul>
             </div>

@@ -60,7 +60,7 @@ const Sidebar: React.FC<SidebarProps> = ({ activeNav, activeSubNav }) => {
         <span> {<img src="/images/new-logo.png" alt="SpeakUp Icon" />}</span>
       </Link>
 
-      <ul className="nav nav-pills flex-column mb-auto mt-3" style={{ paddingBottom: '174px' }}>
+      <ul className="nav nav-pills flex-column mb-auto mt-3">
         {menuItems.map((item) => (
           <React.Fragment key={item.name}>
             {item.type === "label" ? (
@@ -132,7 +132,6 @@ const Sidebar: React.FC<SidebarProps> = ({ activeNav, activeSubNav }) => {
           </React.Fragment>
         ))}
       </ul>
-      <span> {<img src="/images/core-logo.png" alt="SpeakUp Icon" />}</span>
     </div>
   );
 };

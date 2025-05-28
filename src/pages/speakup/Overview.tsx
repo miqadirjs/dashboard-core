@@ -1,132 +1,144 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { TbReportSearch } from "react-icons/tb";
 import { MdOutlineDownloadForOffline } from "react-icons/md";
 import DataTable from "components/tables/DataTable";
-import { overviewColumns } from "../../components/tables/overviewColumns";
 import { IoSearch } from "react-icons/io5";
 import CustomCheckbox from "components/ui/CustomCheckbox";
 import CustomSelect from "components/ui/CustomSelect";
+import { overviewColumns } from "components/tables/overviewColumns";
 
 const rows = [
   {
     id: 1,
-    organization: "John Doe",
-    reportid: "876876",
+    organization: "Transport for NSW",
+    reportid: "60148275",
     reportsource: "Transport Speak Upp Hotline",
     datesubmitted: "Mar 5, 2025 11:440 Am",
     reportstage: "Under Asseement",
     movedclient: "No",
     clientreportowner: "-",
+    TierRating: "Tier2"
   },
   {
     id: 2,
-    organization: "John Doe",
-    reportid: "876876",
+    organization: "Transport for NSW",
+    reportid: "60148275",
     reportsource: "Transport Speak Upp Hotline",
     datesubmitted: "Mar 5, 2025 11:440 Am",
-    reportstage: "Under Asseement",
+    reportstage: "Under Review",
     movedclient: "No",
     clientreportowner: "-",
+    TierRating: "Tier2"
   },
   {
     id: 3,
-    organization: "John Doe",
-    reportid: "876876",
+    organization: "Transport for NSW",
+    reportid: "60148275",
     reportsource: "Transport Speak Upp Hotline",
     datesubmitted: "Mar 5, 2025 11:440 Am",
     reportstage: "Under Asseement",
     movedclient: "No",
     clientreportowner: "-",
+    TierRating: "Tier2"
   },
   {
     id: 4,
-    organization: "John Doe",
-    reportid: "876876",
+    organization: "Transport for NSW",
+    reportid: "60148275",
     reportsource: "Transport Speak Upp Hotline",
     datesubmitted: "Mar 5, 2025 11:440 Am",
-    reportstage: "Under Asseement",
+    reportstage: "Under Review",
     movedclient: "No",
     clientreportowner: "-",
+    TierRating: "Tier2"
   },
   {
     id: 5,
-    organization: "John Doe",
-    reportid: "876876",
+    organization: "Transport for NSW",
+    reportid: "60148275",
     reportsource: "Transport Speak Upp Hotline",
     datesubmitted: "Mar 5, 2025 11:440 Am",
     reportstage: "Under Asseement",
     movedclient: "No",
     clientreportowner: "-",
+    TierRating: "Tier2"
   },
   {
     id: 6,
-    organization: "John Doe",
-    reportid: "876876",
+    organization: "Transport for NSW",
+    reportid: "60148275",
     reportsource: "Transport Speak Upp Hotline",
     datesubmitted: "Mar 5, 2025 11:440 Am",
     reportstage: "Under Asseement",
     movedclient: "No",
     clientreportowner: "-",
+    TierRating: "Tier2"
   },
   {
     id: 7,
-    organization: "John Doe",
-    reportid: "876876",
+    organization: "Transport for NSW",
+    reportid: "60148275",
     reportsource: "Transport Speak Upp Hotline",
     datesubmitted: "Mar 5, 2025 11:440 Am",
     reportstage: "Under Asseement",
     movedclient: "No",
     clientreportowner: "-",
+    TierRating: "Tier2"
   },
   {
     id: 8,
-    organization: "John Doe",
-    reportid: "876876",
+    organization: "Transport for NSW",
+    reportid: "60148275",
     reportsource: "Transport Speak Upp Hotline",
     datesubmitted: "Mar 5, 2025 11:440 Am",
     reportstage: "Under Asseement",
     movedclient: "No",
     clientreportowner: "-",
+    TierRating: "Tier2"
   },
   {
     id: 9,
-    organization: "John Doe",
-    reportid: "876876",
+    organization: "Transport for NSW",
+    reportid: "60148275",
     reportsource: "Transport Speak Upp Hotline",
     datesubmitted: "Mar 5, 2025 11:440 Am",
     reportstage: "Under Asseement",
     movedclient: "No",
     clientreportowner: "-",
+    TierRating: "Tier2"
   },
   {
     id: 10,
-    organization: "John Doe",
-    reportid: "876876",
+    organization: "Transport for NSW",
+    reportid: "60148275",
     reportsource: "Transport Speak Upp Hotline",
     datesubmitted: "Mar 5, 2025 11:440 Am",
     reportstage: "Under Asseement",
     movedclient: "No",
     clientreportowner: "-",
+    TierRating: "Tier2"
   },
   {
     id: 11,
-    organization: "John Doe",
-    reportid: "876876",
+    organization: "Transport for NSW",
+    reportid: "60148275",
     reportsource: "Transport Speak Upp Hotline",
     datesubmitted: "Mar 5, 2025 11:440 Am",
     reportstage: "Under Asseement",
     movedclient: "No",
     clientreportowner: "-",
+    TierRating: "Tier2"
   },
   {
     id: 12,
-    organization: "John Doe",
-    reportid: "876876",
+    organization: "Transport for NSW",
+    reportid: "60148275",
     reportsource: "Transport Speak Upp Hotline",
     datesubmitted: "Mar 5, 2025 11:440 Am",
     reportstage: "Under Asseement",
     movedclient: "No",
     clientreportowner: "-",
+    TierRating: "Tier2"
   },
 ];
 
@@ -169,7 +181,6 @@ const Overview: React.FC = () => {
     setSelectedValues((prev) => ({ ...prev, [id]: value }));
   };
 
-
   const checkboxList = [
     { id: "Check1", label: "Client Organisation" },
     { id: "Check2", label: "Report Id" },
@@ -188,7 +199,7 @@ const Overview: React.FC = () => {
     { id: "Check15", label: "Moved to Client" },
     { id: "Check16", label: "Reporter Anonymity" },
   ];
-  
+
   const [checkedItems, setCheckedItems] = useState<{ [key: string]: boolean }>(
     () =>
       checkboxList.reduce((acc, item) => {
@@ -196,9 +207,9 @@ const Overview: React.FC = () => {
         return acc;
       }, {} as { [key: string]: boolean })
   );
-  
+
   const isAllChecked = Object.values(checkedItems).every(Boolean);
-  
+
   const handleCheckAll = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { checked } = e.target;
     const updated = Object.keys(checkedItems).reduce((acc, key) => {
@@ -207,7 +218,7 @@ const Overview: React.FC = () => {
     }, {} as { [key: string]: boolean });
     setCheckedItems(updated);
   };
-  
+
   const handleCheckItem =
     (id: string) => (e: React.ChangeEvent<HTMLInputElement>) => {
       setCheckedItems((prev) => ({
@@ -215,7 +226,19 @@ const Overview: React.FC = () => {
         [id]: e.target.checked,
       }));
     };
-  
+
+  const [showMenu, setShowMenu] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
+  // Close menu on outside click
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        setShowMenu(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   return (
     <div className="mb-8">
@@ -225,12 +248,68 @@ const Overview: React.FC = () => {
           <button className="cta cta_bg_green">
             Add New Report <TbReportSearch />
           </button>
-          <button className="cta cta_bg_blue">
-            Action <MdOutlineDownloadForOffline />
-          </button>
+
+          <div className="action_btn_dropdown">
+            <button
+              className="cta cta_bg_blue d-flex align-items-center gap-2"
+              onClick={() => setShowMenu((prev) => !prev)}
+            >
+              Action <MdOutlineDownloadForOffline />
+            </button>
+            {showMenu && (
+              <div
+                className="card_menu position-absolute bg-white shadow-sm p-2"
+                style={{ right: 0, top: "100%", zIndex: 10 }}
+              >
+                <ul className="list-unstyled mb-0">
+                  <li
+                    className="menu_item py-1 px-2"
+                    onClick={() => alert("Print")}
+                  >
+                    Print
+                  </li>
+                  <li
+                    className="menu_item py-1 px-2"
+                    onClick={() => alert("Edit")}
+                  >
+                    Sharing Option
+                  </li>
+                  <li
+                    className="menu_item py-1 px-2"
+                    onClick={() => alert("Delete")}
+                  >
+                    Move to Client
+                  </li>
+                  <li
+                    className="menu_item py-1 px-2"
+                    onClick={() => alert("Delete")}
+                  >
+                    Mark as Out of Scope
+                  </li>
+                  <li
+                    className="menu_item py-1 px-2"
+                    onClick={() => alert("Delete")}
+                  >
+                    Schedule for Closure
+                  </li>
+                  <li
+                    className="menu_item py-1 px-2"
+                    onClick={() => alert("Delete")}
+                  >
+                    People Involved
+                  </li>
+                </ul>
+              </div>
+            )}
+          </div>
         </div>
       </div>
       <div className="inner_page_scroll">
+        <div className="bg_white mb-3 pb-0">
+          <div className="title_section">
+            <h3 className="mb-0">New Report This Period</h3>
+          </div>
+        </div>
         <div className="bg_white mb-3">
           <div className="custom_check_section">
             <CustomCheckbox
@@ -250,6 +329,11 @@ const Overview: React.FC = () => {
                 onChange={handleCheckItem(item.id)}
               />
             ))}
+          </div>
+        </div>
+        <div className="bg_white mb-3 pb-0">
+          <div className="title_section">
+            <h3 className="mb-0">Refine Search</h3>
           </div>
         </div>
         <div className="bg_white mb-3">

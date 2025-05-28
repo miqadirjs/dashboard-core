@@ -2,9 +2,9 @@
   width: 0;
 }
 body {
-  background-image: url('/public/images/body_bg.png');
-  background-color: #A8C1D2;
-  background-size: cover;      /* Ensures the image covers the entire viewport */
+  background-image: url("/public/images/body_bg.png");
+  background-color: #a8c1d2;
+  background-size: cover; /* Ensures the image covers the entire viewport */
   background-position: center; /* Centers the image */
   background-repeat: no-repeat; /* Prevents repeating the image */
   padding: 20px;
@@ -15,9 +15,9 @@ body {
   display: flex;
   height: 95vh;
   margin: 0 auto;
-  background-image: url('/public/images/inner_bg.png');
-  background-color: #A8C1D2;
-  background-size: cover;      /* Ensures the image covers the entire viewport */
+  background-image: url("/public/images/inner_bg.png");
+  background-color: #DFDFDF;
+  background-size: cover; /* Ensures the image covers the entire viewport */
   background-position: center; /* Centers the image */
   background-repeat: no-repeat; /* Prevents repeating the image */
   /* background-color: #a8c1d2; */
@@ -50,12 +50,12 @@ body {
   height: 34px;
 }
 .nav-link.active {
-  background-color: #07caac !important;
+  background-color: #1A1750 !important;
   color: #fff;
   margin-top: 3px;
 }
 .nav-link:hover {
-  background-color: #07caac !important;
+  background-color: #1A1750 !important;
   color: #fff;
 }
 .logo {
@@ -188,7 +188,8 @@ body {
   margin: 20px;
   padding: 20px 30px;
   border-radius: 20px;
-  box-shadow: 0px 0px 10px 1px #a8c1d2cc;
+  box-shadow: 0px 0px 10px 1px #d1d1d1;
+  opacity: 30;
 }
 .main_content .tab-content {
   height: 67vh;
@@ -202,9 +203,9 @@ body {
   padding: 10px 0 30px;
 }
 .title_section h3 {
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 700;
-  color: #000;
+  color: #9001FE;
 }
 .title_section {
   display: flex;
@@ -243,14 +244,21 @@ body {
 .card_btn button {
   width: 40%;
   height: 34px;
+  color: rgb(255, 255, 255);
+}
+
+.card_btn button:hover {
+  width: 40%;
+  height: 34px;
+  color: rgb(255, 255, 255);
 }
 .card_btn .cta {
-  background: #07caac;
-  border: 1px solid#07caac;
+  background: #1A1750;
+  border: 1px solid#1A1750;
 }
 .card_btn .ctaborder {
-  color: #07caac !important;
-  border: 1px solid#07caac;
+  color: #1A1750 !important;
+  border: 1px solid#1A1750;
   background: transparent !important;
 }
 .card_title {
@@ -260,7 +268,7 @@ body {
 }
 /* ================== */
 .bg_white {
-  background: #F6F9FA;
+  background: #f6f9fa;
   padding: 20px;
   border-radius: 8px;
 }
@@ -302,16 +310,16 @@ body {
   gap: 10px;
 }
 .cta_bg_green {
-  background: #07caac;
+  background: #1A1750;
 }
 .cta_bg_blue {
-  background: #0A82D6;
+  background: #1A1750;
 }
 .form-select {
   border: 0;
   height: 40px;
   font-size: 14px;
-  color: #7E7F7F;
+  color: #7e7f7f;
   font-weight: 500;
 }
 .custom_check_section {
@@ -326,20 +334,20 @@ body {
   padding-bottom: 5px;
   border-radius: 6px;
   font-size: 14px;
-  color: #7F7F7F;
+  color: #7f7f7f;
   font-weight: 500;
   margin-right: 20px;
   margin-bottom: 10px;
   width: fit-content;
 }
-.form-check-input[type=checkbox] {
+.form-check-input[type="checkbox"] {
   border-radius: 100%;
 }
-.form-check-input[type=checkbox]:checked {
+.form-check-input[type="checkbox"]:checked {
   background-color: #07caac;
   border-color: #07caac;
 }
-.form-check-input[type=checkbox]:checked + label {
+.form-check-input[type="checkbox"]:checked + label {
   color: #07caac;
 }
 .inner_page_scroll {
@@ -412,7 +420,7 @@ body {
 }
 .upload_section {
   border: 1px dashed;
-  border-color: #4C95EB;
+  border-color: #4c95eb;
   padding: 20px;
   border-radius: 12px;
   cursor: pointer;
@@ -503,7 +511,7 @@ body {
   width: 35px;
   height: 35px;
   border-radius: 50%;
-  background: #07CAAC;
+  background: #07caac;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -515,7 +523,7 @@ body {
 }
 /* ======== My Clients ======= */
 .cardChart {
-  background: #E3F5FF;
+  background: #e3f5ff;
   height: 180px;
   border: 0;
   box-shadow: none;
@@ -537,7 +545,7 @@ body {
 }
 .cardChart h6 {
   font-size: 15px;
-  color: #1C1C1C !important;
+  color: #1c1c1c !important;
   font-weight: 700;
 }
 .custom-add-card .card-body {
@@ -561,7 +569,7 @@ body {
   padding: 30px 0 20px;
 }
 .client_card_bottom {
-  background: #F8F8F8;
+  background: #f8f8f8;
   padding: 20px;
   border-radius: 12px;
   display: flex;
@@ -574,7 +582,7 @@ body {
   align-items: center;
 }
 .bg_icon {
-  background: #07CAAC;
+  background: #1A1750;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -590,12 +598,12 @@ body {
 }
 .switch_cta {
   background: #fff;
-  border: 1px solid #07caac;
+  border: 1px solid #1A1750;
   height: 43px;
   border-radius: 10px;
   padding: 0 20px;
   font-size: 16px;
-  color: #1C1C1C;
+  color: #1c1c1c;
   font-weight: 500;
 }
 .client_card_bottom_left div {
@@ -616,4 +624,204 @@ body {
 .menu_item {
   color: #000;
   text-align: left;
+}
+.search_and_date_filters {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  padding: 0 0 10px;
+}
+.search_and_date_filters .search_field {
+  margin-bottom: 0;
+  height: 56px;
+}
+.search_and_date_filters .calenders .MuiFormControl-root {
+  background: #fff;
+  border: 0;
+  border-radius: 10px;
+  overflow: hidden;
+  outline: none;
+}
+.css-vycme6-MuiPickersInputBase-root-MuiPickersOutlinedInput-root {
+  border: 0 !important;
+}
+.css-lqwr9g-MuiPickersOutlinedInput-notchedOutline {
+  border: 0 !important;
+}
+.action_btn_dropdown {
+  position: relative;
+}
+.card_menu ul li {
+  cursor: pointer;
+}
+#flexSwitchCheckDefault {
+  border-radius: 20px !important;
+}
+.home_page_1 {
+  position: relative;
+  z-index: 9999;
+}
+.custom-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1050;
+}
+.custom-modal.show {
+  display: flex;
+}
+.custom-modal-content {
+  background-color: white;
+  border-radius: 20px;
+  width: 80%;
+  max-width: 500px;
+  animation: fadeIn 0.3s ease-in-out;
+  overflow: hidden;
+}
+.custom-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 15px;
+  background: #1A1750;
+}
+.custom-modal-header h5 {
+  margin: 0;
+  font-size: 18px;
+  color: #fff;
+  font-weight: 400;
+}
+.close-btn {
+  font-size: 24px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: #fff;
+}
+.custom-modal-body {
+  margin-top: 20px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
+}
+.custom-modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+.custom-modal-footer .btn {
+  padding: 10px 20px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.custom-modal-footer .btn:hover {
+  background-color: #0056b3;
+}
+.modal_cta_btn {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  width: 80%;
+}
+.modal_cta_btn .ctaborder {
+  background: transparent;
+  border: 1px solid #1A1750;
+  color: #1A1750;
+  border-radius: 6px;
+}
+
+.modal_cta_btn .cta {
+  background: #1A1750;
+  border: 1px solid #1A1750;
+  color: #fff;
+  border-radius: 6px;
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+.system_logs select {
+  height: 56px;
+  width: 200px;
+}
+
+.system_logs .mb-3 {
+  margin: 0 !important;
+}
+
+.MuiStack-root.css-10o2lyd-MuiStack-root {
+  padding: 0;
+}
+.pdf_files {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+  padding-bottom: 30px;
+}
+
+.file_shows {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.file_shows span {
+  background: #fff;
+  width: 90px;
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.file_name {
+  font-size: 14px;
+  color: #000;
+  margin: 0;
+}
+
+.mp4_format_file {
+  background: #b9cddb;
+  box-shadow: 0px 0px 22px 1px #41a3e73b;
+  max-width: 90%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 300px;
+  padding: 0px 50px;
+  border-radius: 20px;
+  text-align: center;
+  gap: 20px;
+}
+
+.rounded-3 {
+    
+    height: 298px;
+    
+
 }

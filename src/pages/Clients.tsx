@@ -230,21 +230,21 @@ const Clients: React.FC = () => {
                     <ul className="list-unstyled mb-0">
                       <li
                         className="menu_item py-1 px-2"
-                        onClick={() => alert("View Details")}
+                        onClick={() => alert("Government")}
                       >
-                        View Details
+                        Government
                       </li>
                       <li
                         className="menu_item py-1 px-2"
-                        onClick={() => alert("Edit")}
+                        onClick={() => alert("Sports")}
                       >
-                        Edit
+                        Sports
                       </li>
                       <li
                         className="menu_item py-1 px-2"
                         onClick={() => alert("Delete")}
                       >
-                        Delete
+                        Corporate
                       </li>
                     </ul>
                   </div>

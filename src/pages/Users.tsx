@@ -1,6 +1,6 @@
 import DataTable from "components/tables/DataTable";
 import { userColumns } from "components/tables/userColumns";
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { IoSearch } from "react-icons/io5";
 import { MdOutlineDownloadForOffline } from "react-icons/md";
 
@@ -63,20 +63,51 @@ const rows = [
 ];
 
 const Users: React.FC = () => {
+  const [showMenu, setShowMenu] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
+  // Close menu on outside click
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        setShowMenu(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
   return (
     <div className="mb-8">
       <div className="title_section">
         <div>
-          <h3 className="text-lg font-semibold text-gray-800 mb-4">My Users</h3>
+          <h3 className="mb-4">My Users</h3>
           <div className="search_field">
             <IoSearch />
             <input type="text" placeholder="search" />
           </div>
         </div>
-        <div className="cta_btn_sect">
-          <button className="cta cta_bg_blue">
+        <div className="action_btn_dropdown">
+          <button
+            className="cta cta_bg_blue d-flex align-items-center gap-2"
+            onClick={() => setShowMenu((prev) => !prev)}
+          >
             Action <MdOutlineDownloadForOffline />
           </button>
+          {showMenu && (
+            <div
+              className="card_menu position-absolute bg-white shadow-sm p-2"
+              style={{ right: 0, top: "100%", zIndex: 10 }}
+            >
+              <ul className="list-unstyled mb-0">
+                <li
+                  className="menu_item py-1 px-2"
+                  onClick={() => alert("Print")}
+                >
+                  Add New User
+                </li>
+              </ul>
+            </div>
+          )}
         </div>
       </div>
       <div className="inner_page_scroll">
