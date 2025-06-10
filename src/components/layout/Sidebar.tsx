@@ -14,25 +14,19 @@ interface MenuItem {
   type?: "label";
 }
 
-interface SidebarProps {
-  activeNav: string;
-  activeSubNav?: string; // Active sub navigation can be undefined
-}
-
-const Sidebar: React.FC<SidebarProps> = ({ activeNav, activeSubNav }) => {
+const Sidebar: React.FC = () => {
   const location = useLocation();
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
 
   const toggleMenu = (menu: string) => {
-    setActiveMenu(activeMenu === menu ? null : menu);
+    setActiveMenu((prev) => (prev === menu ? null : menu));
   };
 
   const menuItems: MenuItem[] = [
     { name: "Home", path: "/", icon: "bi bi-house" },
-    { name: "Dashboard", path: "/dashboard", icon: "bi bi-speedometer2" },
+    { name: "Dashboard", path: "/maindashboard", icon: "bi bi-speedometer2" },
     {
       name: "SpeakUp+",
-      path: "/speakup",
       icon: "bi bi-megaphone",
       submenu: [
         { name: "Overview", path: "/speakup/overview" },
@@ -40,10 +34,7 @@ const Sidebar: React.FC<SidebarProps> = ({ activeNav, activeSubNav }) => {
         { name: "Closed", path: "/speakup/closed" },
       ],
     },
-    {
-      type: "label",
-      name: "Admin",
-    },
+    { type: "label", name: "Admin" },
     { name: "My Clients", path: "/clients", icon: "bi bi-people" },
     { name: "My Users", path: "/users", icon: "bi bi-person-lines-fill" },
     { name: "System Logs", path: "/logs", icon: "bi bi-clipboard-data" },
@@ -52,17 +43,14 @@ const Sidebar: React.FC<SidebarProps> = ({ activeNav, activeSubNav }) => {
   ];
 
   return (
-    <div className="sidebar">
-      <Link
-        to="/"
-        className="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-decoration-none"
-      >
-        <span> {<img src="/images/new-logo.png" alt="SpeakUp Icon" />}</span>
+    <div className="sidebar" role="navigation">
+      <Link to="/" className="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-decoration-none">
+        <img src="/images/new-logo.png" alt="SpeakUp Logo" />
       </Link>
 
-      <ul className="nav nav-pills flex-column mb-auto mt-3" style={{ paddingBottom: '174px' }}>
+      <ul className="nav nav-pills flex-column mb-auto mt-3" style={{ paddingBottom: "150px" }}>
         {menuItems.map((item) => (
-          <React.Fragment key={item.name}>
+          <React.Fragment key={`${item.name}-${item.path ?? "label"}`}>
             {item.type === "label" ? (
               <li className="px-3 py-2 adminLabel text-uppercase text-muted small fw-bold">
                 {item.name}
@@ -73,8 +61,7 @@ const Sidebar: React.FC<SidebarProps> = ({ activeNav, activeSubNav }) => {
                   <>
                     <button
                       className={`nav-link d-flex align-items-center ${
-                        activeMenu === item.name ||
-                        item.submenu.some((sub) => location.pathname === sub.path)
+                        activeMenu === item.name || item.submenu.some((sub) => location.pathname === sub.path)
                           ? "active"
                           : ""
                       }`}
@@ -85,23 +72,18 @@ const Sidebar: React.FC<SidebarProps> = ({ activeNav, activeSubNav }) => {
                         backgroundColor: "transparent",
                         border: "none",
                       }}
+                      aria-expanded={activeMenu === item.name}
                     >
                       <i className={`${item.icon} me-2`}></i>
                       {item.name}
                       <i
-                        className={`bi bi-chevron-${
-                          activeMenu === item.name ? "down" : "right"
-                        } ms-auto`}
+                        className={`bi bi-chevron-${activeMenu === item.name ? "down" : "right"} ms-auto`}
                       ></i>
                     </button>
-                    <div
-                      className={`collapse ${
-                        activeMenu === item.name ? "show" : ""
-                      }`}
-                    >
+                    <div className={`collapse ${activeMenu === item.name ? "show" : ""}`}>
                       <ul className="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                         {item.submenu.map((subItem) => (
-                          <li key={subItem.name}>
+                          <li key={`${item.name}-${subItem.name}`}>
                             <Link
                               to={subItem.path}
                               className={`nav-link d-flex align-items-center ${
@@ -117,22 +99,27 @@ const Sidebar: React.FC<SidebarProps> = ({ activeNav, activeSubNav }) => {
                     </div>
                   </>
                 ) : (
-                  <Link
-                    to={item.path!}
-                    className={`nav-link d-flex align-items-center ${
-                      location.pathname === item.path ? "active" : ""
-                    }`}
-                  >
-                    <i className={`${item.icon} me-2`}></i>
-                    {item.name}
-                  </Link>
+                  item.path && (
+                    <Link
+                      to={item.path}
+                      className={`nav-link d-flex align-items-center ${
+                        location.pathname === item.path ? "active" : ""
+                      }`}
+                    >
+                      <i className={`${item.icon} me-2`}></i>
+                      {item.name}
+                    </Link>
+                  )
                 )}
               </li>
             )}
           </React.Fragment>
         ))}
       </ul>
-      <span> {<img src="/images/core-logo.png" alt="SpeakUp Icon" />}</span>
+
+      <span className="fixedBottomLogo">
+        <img src="/images/core-logo.png" alt="Core Logo" />
+      </span>
     </div>
   );
 };

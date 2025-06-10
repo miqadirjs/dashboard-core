@@ -10,6 +10,8 @@ import "./App.css";
 import ReportDetails from "pages/speakup/ReportDetails";
 import Systemlog from "pages/Systemlogs";
 import Userguide from "pages/userguide";
+import Maindashboard from "pages/Maindashboard";
+import HelpdeskForm from "pages/Help";
 
 const App: React.FC = () => {
   return (
@@ -20,6 +22,14 @@ const App: React.FC = () => {
           element={
             <DashboardLayout activeNav="Home" activeSubNav="Dashboard">
               <Dashboard />
+            </DashboardLayout>
+          }
+        />
+        <Route
+          path="/maindashboard"
+          element={
+            <DashboardLayout activeNav="Home" activeSubNav="Home">
+              <Maindashboard />
             </DashboardLayout>
           }
         />
@@ -68,6 +78,14 @@ const App: React.FC = () => {
           element={
             <DashboardLayout activeNav="Admin"  activeSubNav="User Guide">
               <Userguide />
+            </DashboardLayout>
+          }
+        />
+        <Route
+          path="/help"
+          element={
+            <DashboardLayout activeNav="Admin"  activeSubNav="help">
+              <HelpdeskForm />
             </DashboardLayout>
           }
         />

@@ -12,7 +12,7 @@ interface DashboardLayoutProps {
 const DashboardLayout: React.FC<DashboardLayoutProps> = ({ activeNav, activeSubNav, children }) => {
   return (
     <div className="main_wrapper">
-      <Sidebar activeNav={activeNav} activeSubNav={activeSubNav} />
+      <Sidebar />
       <div className="flex-grow-1 d-flex flex-column overflow-hidden">
         <Header />
         <main className="main_content">{children}</main>
