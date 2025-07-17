@@ -1,3 +1,4 @@
+import AddUserModal from "components/AddUserModal";
 import DataTable from "components/tables/DataTable";
 import { userColumns } from "components/tables/userColumns";
 import React, { useEffect, useRef, useState } from "react";
@@ -63,6 +64,7 @@ const rows = [
 ];
 
 const Users: React.FC = () => {
+  const [showModal, setShowModal] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
   // Close menu on outside click
@@ -95,17 +97,21 @@ const Users: React.FC = () => {
           </button>
           {showMenu && (
             <div
-              className="card_menu position-absolute bg-white shadow-sm p-2"
+              className="card_menu position-absolute bg-white shadow-sm p-2 mt-2"
               style={{ right: 0, top: "100%", zIndex: 10 }}
             >
               <ul className="list-unstyled mb-0">
-                <li
-                  className="menu_item py-1 px-2"
-                  onClick={() => alert("Print")}
-                >
-                  Add New User
-                </li>
-              </ul>
+        <li
+          className="menu_item py-1 px-2"
+          role="button"
+          onClick={() => setShowModal(true)}
+        >
+          Add New User
+        </li>
+      </ul>
+
+      {/* Modal Component */}
+      <AddUserModal show={showModal} onClose={() => setShowModal(false)} />
             </div>
           )}
         </div>
